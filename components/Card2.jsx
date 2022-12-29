@@ -6,7 +6,7 @@ function Card2({ title = 'something' ,img='	https://wrapped-images.spotifycdn.co
   return (
     <div
       style={{
-        background: `linear-gradient(rgb(40, 43, 41), #${randomColor()})`,
+        background: `linear-gradient(rgba(255, 255, 255, 0.2), #${randomColor()})`,
       }}
       className="w-[200px] h-[200px] rounded-md relative overflow-hidden mt-6 transition"
     >

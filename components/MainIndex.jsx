@@ -4,10 +4,14 @@ import Card1 from "./Card1";
 import useNewReleases from "../hooks/getNewReleases";
 import useFeaturedPlaylists from "../hooks/getFeaturedPlaylists";
 import CradLoader from "./sceletonLoader/CradLoader";
+import CradLoader2 from "./sceletonLoader/CardLoader2";
+
 import { useRouter } from "next/router";
 import { useContext } from "react";
 import { TunContext } from "../provider/tuneprovider";
 import { Skeleton } from "@mui/material";
+import useMyTopArtist from "../hooks/getMyTopArtists";
+import Card3 from './Card3'
 
 function MainIndex() {
   const { data: session } = useSession();
@@ -30,10 +34,51 @@ function MainIndex() {
   } = useFeaturedPlaylists({
     token: session?.user.accessToken,
   });
-  console.log(newReleas);
+  const { toper,err:srErr,loading:topLD } = useMyTopArtist({
+    token: session?.user.accessToken,
+  });
+  console.log(toper);
   // console.log(session);
   return (
     <div className="w-full">
+        {!topLD  ? (
+        <h1 className="text-2xl text-white font-sans font-bold m-5">
+          {toper && "Your top Track"}
+        </h1>
+      ) : (
+        <Skeleton
+          variant="text"
+          sx={{
+            fontSize: "3rem",
+            bgcolor: "rgb(140, 139, 139)",
+            margin: "1.25rem",
+            width: "300px",
+            borderRadius: "1rem",
+          }}
+        />
+      )}
+      <div className="w-full flex flex-wrap items-center justify-around ">
+        {topLD ? (
+          <CradLoader2 limit={4} />
+        ) : (
+          toper?.map((e) => {
+            return (
+              <div
+                id={e.id}
+                onClick={() => {
+                  router.push(`/track/${e.track?.id}`);
+                  setPlist(e.context == !null && e.context.uri);
+                }}
+              >
+                <Card3
+                img={e.album.images[2].url} 
+                title={e.artists[0].name}                 
+                />
+              </div>
+            );
+          })
+        )}
+      </div>
       {!loading ? (
         <h1 className="text-2xl text-white font-sans font-bold m-5">
           {lenght != 0 && "Recently PLayed"}
@@ -94,7 +139,7 @@ function MainIndex() {
         ) : (
           newReleas?.map((e) => {
             return (
-              <div id={e.id} onClick={()=>router.push(`/track/${e.id}`)}>
+              <div id={e.id} onClick={() => router.push(`/track/${e.id}`)}>
                 <Card1
                   image={e.images[1].url}
                   title={e.name}

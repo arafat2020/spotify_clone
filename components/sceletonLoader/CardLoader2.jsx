@@ -1,7 +1,7 @@
 import { Skeleton } from "@mui/material";
 import React from "react";
 
-function CardLoader2() {
+function CardLoader2({limit=12}) {
   const CardLoader = () => {
     return (
       <div className="glass_bg w-[350px] h-[64px] flex rounded-md overflow-hidden m-5">
@@ -38,19 +38,9 @@ function CardLoader2() {
   };
   return (
     <div className="w-[100%] h-[100%] overflow-y-scroll scrollbar-hide flex flex-wrap items-center justify-around">
-      <CardLoader />
-      <CardLoader />
-      <CardLoader />
-      <CardLoader />
-      <CardLoader />
-      <CardLoader />
-      <CardLoader />
-      <CardLoader />
-      <CardLoader />
-      <CardLoader />
-      <CardLoader />
-      <CardLoader />
-      <CardLoader />
+      {Array(limit).fill(0).map(()=>{
+        return <CardLoader />
+      })}
     </div>
   );
 }

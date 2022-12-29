@@ -1,8 +1,16 @@
-import { getProviders, signIn } from "next-auth/react";
-import Image from "next/image";
-import React from "react";
+import { getProviders, signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/router";
+import React, { useEffect } from "react";
 
 function Login({ provider }) {
+  const router = useRouter()
+  const {status} = useSession()
+  useEffect(() => {
+    if (status === "authenticated") {
+      const reDirect = () => router.push("/");
+      reDirect();
+    }
+  }, [status]);
   return (
     <div className="w-screen h-screen bg-black flex flex-col justify-center">
       <div className="flex flex-col items-center">
