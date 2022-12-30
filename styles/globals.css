@@ -9,8 +9,16 @@
     -webkit-backdrop-filter: blur(4px);
     border: 1px solid rgba(255, 255, 255, 0.3);
   }
-  .roted{
-    transform: rotate(25deg) translate(18%,-2%);
+  .glass_bg2 {
+    background: rgba(101, 98, 98, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(1.6px);
+    -webkit-backdrop-filter: blur(1.6px);
+    border: 1px solid rgba(101, 98, 98, 0.09);
+  }
+  .roted {
+    transform: rotate(25deg) translate(18%, -2%);
   }
 }
 .LazyLoad {

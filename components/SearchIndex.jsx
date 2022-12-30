@@ -3,7 +3,8 @@ import { useEffect, useRef, useState } from "react";
 import useCategories from "../hooks/getCategories";
 import Card2 from "./Card2";
 import SearchIcon from "@mui/icons-material/Search";
-import useSearch from "../hooks/searchTrack";
+import useInitialSearch from "../hooks/initialSearch";
+import Initialreasult from "./Initialreasult";
 
 export default function SearchIndex() {
   const { data: session } = useSession();
@@ -11,10 +12,11 @@ export default function SearchIndex() {
     token: session?.user?.accessToken,
   });
   const [term, setTerm] = useState();
-  const { trackReasylt, loading:resLd, err:rsLd } = useSearch({
-    token: session?.user?.accessToken,
-    term:term
-  });
+  const {
+    initialReasult,
+    loading: initailLD,
+    err: initialErr,
+  } = useInitialSearch({ token: session?.user?.accessToken });
   const ref = useRef();
   useEffect(() => {
     const yt_form = document.getElementById("yt_form");
@@ -25,10 +27,10 @@ export default function SearchIndex() {
       }
     });
   });
-  console.log(trackReasylt, err);
+  console.log(initialReasult, initialErr);
   return (
     <div className="w-full">
-      <div className="bg-white w-1/2 p-3 rounded-full ml-4 mt-3">
+      <div className="bg-white w-1/2 p-2 rounded-full ml-4 mt-3">
         <SearchIcon />
         <input
           id="yt_form"
@@ -53,6 +55,7 @@ export default function SearchIndex() {
             );
           })}
       </div>
+      {term && <Initialreasult Initialreasult={initialReasult} />}
     </div>
   );
 }
