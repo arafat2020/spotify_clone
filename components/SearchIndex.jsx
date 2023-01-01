@@ -16,7 +16,7 @@ export default function SearchIndex() {
     initialReasult,
     loading: initailLD,
     err: initialErr,
-  } = useInitialSearch({ token: session?.user?.accessToken });
+  } = useInitialSearch({ token: session?.user?.accessToken, term: term });
   const ref = useRef();
   useEffect(() => {
     const yt_form = document.getElementById("yt_form");
@@ -27,7 +27,7 @@ export default function SearchIndex() {
       }
     });
   });
-  console.log(initialReasult, initialErr);
+  console.log(initailLD);
   return (
     <div className="w-full">
       <div className="bg-white w-1/2 p-2 rounded-full ml-4 mt-3">
@@ -55,7 +55,9 @@ export default function SearchIndex() {
             );
           })}
       </div>
-      {term && <Initialreasult Initialreasult={initialReasult} />}
+      {term && (
+        <Initialreasult Initialreasult={initialReasult} loading={initailLD} />
+      )}
     </div>
   );
 }

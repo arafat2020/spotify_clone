@@ -20,6 +20,9 @@
   .roted {
     transform: rotate(25deg) translate(18%, -2%);
   }
+  .fit{
+    width: fit-content;
+  }
 }
 .LazyLoad {
   opacity: 0;
