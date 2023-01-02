@@ -49,11 +49,11 @@ function MainIndex() {
         <Skeleton
           variant="text"
           sx={{
-            fontSize: "3rem",
-            bgcolor: "rgb(140, 139, 139)",
+            fontSize: "2rem",
+            bgcolor: "white",
             margin: "1.25rem",
             width: "300px",
-            borderRadius: "1rem",
+          
           }}
         />
       )}
@@ -87,11 +87,10 @@ function MainIndex() {
         <Skeleton
           variant="text"
           sx={{
-            fontSize: "3rem",
-            bgcolor: "rgb(140, 139, 139)",
+            fontSize: "2rem",
+            bgcolor: "white",
             margin: "1.25rem",
             width: "300px",
-            borderRadius: "2rem",
           }}
         />
       )}

@@ -27,7 +27,7 @@ function Card1({
           {truncateString(title, 13)}
         </p>
         <p className="text-sm font-semibold text-slate-400">
-          {truncateString(subtitle, 10)}
+          {truncateString(subtitle, 15)}
         </p>
       </div>
     </div>

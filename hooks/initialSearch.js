@@ -8,7 +8,7 @@ function useInitialSearch({ token, limit = 4, offset = 0 ,term}) {
   useEffect(() => {
     setLoading(true)
     token && term && axios.get(
-      `https://api.spotify.com/v1/search?q=${term}&type=track%2Cartist%2Cplaylist%2Calbum&market=ES&limit=${limit}&offset=${offset}`,{
+      `https://api.spotify.com/v1/search?q=${term}&type=track%2Cartist%2Cplaylist%2Calbum&market=US&limit=${limit}&offset=${offset}`,{
         headers:{
             Authorization: `Bearer ${token}`
         }

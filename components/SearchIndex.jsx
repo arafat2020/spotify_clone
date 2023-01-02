@@ -35,6 +35,7 @@ export default function SearchIndex() {
         <input
           id="yt_form"
           ref={ref}
+          // onChange={(e)=>setTerm(e.target.value)}
           type="text"
           className="outline-none w-3/4"
           placeholder="What do you want to listen to?"
@@ -56,7 +57,7 @@ export default function SearchIndex() {
           })}
       </div>
       {term && (
-        <Initialreasult Initialreasult={initialReasult} loading={initailLD} />
+        <Initialreasult Initialreasult={initialReasult} loading={initailLD} term={term}/>
       )}
     </div>
   );

@@ -1,19 +1,18 @@
 import { useEffect, useState } from "react";
 import { spiApi } from "../lib/spotify";
 
-
-export default function useSearch({ token, term }) {
+export default function useSearch({ token, term, limit = 10, offset = 0 }) {
   const [trackReasult, setTrackReasult] = useState();
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState(null);
   useEffect(() => {
     async function LoadSearch() {
-      setLoading(true)
+      setLoading(true);
       await spiApi.setAccessToken(token);
       await spiApi
-        .searchTracks(term)
+        .searchTracks(term, { limit: limit, offset: offset })
         .then((res) => {
-          setTrackReasult(res.body);
+          setTrackReasult(res.body.tracks.items);
           setLoading(false);
         })
         .catch((err) => {
@@ -21,7 +20,7 @@ export default function useSearch({ token, term }) {
           setLoading(false);
         });
     }
-    LoadSearch()
+    LoadSearch();
   }, [token, term]);
   return {
     trackReasylt: trackReasult,
