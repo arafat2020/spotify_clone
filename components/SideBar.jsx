@@ -82,7 +82,7 @@ function SideBar() {
           ) : (
             playList?.map((e) => {
               return (
-                <div key={e.name} className="cursor-pointer hover:text-white ml-5">
+                <div key={e.name} onClick={()=>router.push(`/playlist/${e.id}`)} className="cursor-pointer hover:text-white ml-5">
                   <p>{e.name}</p>
                 </div>
               );

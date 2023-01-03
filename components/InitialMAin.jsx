@@ -2,14 +2,13 @@ import React from "react";
 import Card1 from "./Card1";
 import Card3 from "./Card3";
 
-function InitialMAin({Initialreasult}) {
+function InitialMAin({ Initialreasult }) {
   return (
     <div className="w-full">
-     
       <div className="w-full mt-4 flex justify-evenly">
         <div className="w-[45%]  ">
           <h1 className="text-white text-2xl mb-4 capitalize font-bold font-sans">
-            {Initialreasult && 'Top result'}
+            {Initialreasult && "Top result"}
           </h1>
           <div className="w-full h-[250px] glass_bg2 rounded-md flex flex-col justify-evenly ">
             <img
@@ -32,8 +31,7 @@ function InitialMAin({Initialreasult}) {
         </div>
         <div className="w-[45%]  ">
           <h1 className="text-white text-3xl mb-4 capitalize font-bold font-sans">
-          {Initialreasult && 'Songs'}
-
+            {Initialreasult && "Songs"}
           </h1>
           <div className="w-full h-[250px] flex flex-col justify-around">
             {Initialreasult &&
@@ -54,8 +52,7 @@ function InitialMAin({Initialreasult}) {
       </div>
       <div className="w-full">
         <h1 className="text-white text-2xl  mt-1 capitalize font-bold font-sans ml-6">
-        {Initialreasult && 'Artists'}
-
+          {Initialreasult && "Artists"}
         </h1>
         <div className="w-full flex flex-wrap items-center justify-around">
           {Initialreasult &&
@@ -74,8 +71,7 @@ function InitialMAin({Initialreasult}) {
       </div>
       <div className="w-full">
         <h1 className="text-white text-2xl  mt-1 capitalize font-bold font-sans ml-6">
-        {Initialreasult && 'Albums'}
-
+          {Initialreasult && "Albums"}
         </h1>
         <div className="w-full flex flex-wrap items-center justify-around">
           {Initialreasult &&
@@ -85,7 +81,9 @@ function InitialMAin({Initialreasult}) {
                   key={e.id}
                   image={e.images[1]?.url && e.images[1].url}
                   title={e.name}
-                  subtitle={`${e.release_date.split("-")[0]}${` . `}${e.artists[0].name}`}
+                  subtitle={`${e.release_date.split("-")[0]}${` . `}${
+                    e.artists[0].name
+                  }`}
                 />
               );
             })}
@@ -93,8 +91,7 @@ function InitialMAin({Initialreasult}) {
       </div>
       <div className="w-full">
         <h1 className="text-white text-2xl  mt-1 capitalize font-bold font-sans ml-6">
-        {Initialreasult && 'PlayLists'}
-
+          {Initialreasult && "PlayLists"}
         </h1>
         <div className="w-full flex flex-wrap items-center justify-around">
           {Initialreasult &&

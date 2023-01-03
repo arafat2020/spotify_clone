@@ -30,8 +30,10 @@ export default function SearchIndex() {
   console.log(initailLD);
   return (
     <div className="w-full">
-      <div className="bg-white w-1/2 p-2 rounded-full ml-4 mt-3">
-        <SearchIcon />
+      <div className="bg-white w-1/2 p-2 rounded-full ml-4 mt-3 flex">
+        <div className="cursor-pointer" onClick={()=>setTerm(ref.current.value)}>
+          <SearchIcon />
+        </div>
         <input
           id="yt_form"
           ref={ref}
@@ -57,7 +59,11 @@ export default function SearchIndex() {
           })}
       </div>
       {term && (
-        <Initialreasult Initialreasult={initialReasult} loading={initailLD} term={term}/>
+        <Initialreasult
+          Initialreasult={initialReasult}
+          loading={initailLD}
+          term={term}
+        />
       )}
     </div>
   );

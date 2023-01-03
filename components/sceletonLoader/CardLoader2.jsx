@@ -38,8 +38,8 @@ function CardLoader2({limit=12}) {
   };
   return (
     <div className="w-[100%] h-[100%] overflow-y-scroll scrollbar-hide flex flex-wrap items-center justify-around">
-      {Array(limit).fill(0).map(()=>{
-        return <CardLoader />
+      {Array(limit).fill(0).map((i)=>{
+        return <CardLoader key={i}/>
       })}
     </div>
   );

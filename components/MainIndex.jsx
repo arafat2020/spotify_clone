@@ -11,7 +11,7 @@ import { useContext } from "react";
 import { TunContext } from "../provider/tuneprovider";
 import { Skeleton } from "@mui/material";
 import useMyTopArtist from "../hooks/getMyTopArtists";
-import Card3 from './Card3'
+import Card3 from "./Card3";
 
 function MainIndex() {
   const { data: session } = useSession();
@@ -34,14 +34,18 @@ function MainIndex() {
   } = useFeaturedPlaylists({
     token: session?.user.accessToken,
   });
-  const { toper,err:srErr,loading:topLD } = useMyTopArtist({
+  const {
+    toper,
+    err: srErr,
+    loading: topLD,
+  } = useMyTopArtist({
     token: session?.user.accessToken,
   });
   console.log(toper);
   // console.log(session);
   return (
     <div className="w-full">
-        {!topLD  ? (
+      {!topLD ? (
         <h1 className="text-2xl text-white font-sans font-bold m-5">
           {toper && "Your top Track"}
         </h1>
@@ -53,7 +57,6 @@ function MainIndex() {
             bgcolor: "white",
             margin: "1.25rem",
             width: "300px",
-          
           }}
         />
       )}
@@ -64,15 +67,16 @@ function MainIndex() {
           toper?.map((e) => {
             return (
               <div
-                id={e.id}
+                key={e.id}
                 onClick={() => {
                   router.push(`/track/${e.track?.id}`);
                   setPlist(e.context == !null && e.context.uri);
                 }}
               >
                 <Card3
-                img={e.album.images[2].url} 
-                title={e.artists[0].name}                 
+                  key={e.id}
+                  img={e.album.images[2].url}
+                  title={e.artists[0].name}
                 />
               </div>
             );
@@ -101,13 +105,14 @@ function MainIndex() {
           played?.map((e) => {
             return (
               <div
-                id={e.track?.id}
+                key={e.track?.id}
                 onClick={() => {
                   router.push(`/track/${e.track?.id}`);
                   setPlist(e.context == !null && e.context.uri);
                 }}
               >
                 <Card1
+                  key={e.id}
                   image={e.track?.album.images[1].url}
                   title={e.track?.name}
                   subtitle={e.track?.artists[0].name}
@@ -138,8 +143,9 @@ function MainIndex() {
         ) : (
           newReleas?.map((e) => {
             return (
-              <div id={e.id} onClick={() => router.push(`/track/${e.id}`)}>
+              <div key={e.id} onClick={() => router.push(`/track/${e.id}`)}>
                 <Card1
+                  key={e.id}
                   image={e.images[1].url}
                   title={e.name}
                   subtitle={e.artists[0].name}
@@ -160,11 +166,14 @@ function MainIndex() {
         ) : (
           featurePLaylist?.map((e) => {
             return (
-              <Card1
-                image={e.images[0].url}
-                title={e.name}
-                subtitle={e.description}
-              />
+              <div key={e.id} onClick={()=>router.push(`/playlist/${e.id}`)}>
+                <Card1
+                  key={e.id}
+                  image={e.images[0].url}
+                  title={e.name}
+                  subtitle={e.description}
+                />
+              </div>
             );
           })
         )}
