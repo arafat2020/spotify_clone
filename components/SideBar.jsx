@@ -20,7 +20,7 @@ function SideBar() {
 
   // console.log(loading, err, playList);
   return (
-    <div className="w-[30%] h-[100%] bg-black">
+    <div className="w-[30%] min-w-[189px] h-[100%] bg-black">
       <div className=" ml-5 mt-5 space-y-5">
         <h1>
           <span className="text-[#e2dbdb] text-lg">hacker</span>
@@ -46,7 +46,7 @@ function SideBar() {
               <p>Search</p>
             </div>
           </div>
-          <div className=" flex items-center hover:text-white cursor-pointer">
+          <div onClick={()=>router.push('/librery')} className=" flex items-center hover:text-white cursor-pointer">
             <div className="p-1">
               <LibraryMusicIcon />
             </div>

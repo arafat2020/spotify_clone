@@ -11,14 +11,17 @@ function InitialMAin({ Initialreasult }) {
             {Initialreasult && "Top result"}
           </h1>
           <div className="w-full h-[250px] glass_bg2 rounded-md flex flex-col justify-evenly ">
-            <img
-              loading="lazy"
-              className="w-[92px] ml-5 h-[92px]  rounded-full"
-              src={
-                Initialreasult && Initialreasult.artists?.items[0].images[2].url
-              }
-              alt="img"
-            />
+            {Initialreasult && (
+              <img
+                loading="lazy"
+                className="w-[92px] ml-5 h-[92px]  rounded-full"
+                src={
+                  Initialreasult &&
+                  Initialreasult.artists?.items[0].images[2].url
+                }
+                alt="img"
+              />
+            )}
             <h2 className="text-white text-3xl ml-5  capitalize font-bold font-sans">
               {Initialreasult && Initialreasult.artists?.items[0].name}
             </h2>

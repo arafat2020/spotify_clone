@@ -5,8 +5,10 @@ import Card2 from "./Card2";
 import SearchIcon from "@mui/icons-material/Search";
 import useInitialSearch from "../hooks/initialSearch";
 import Initialreasult from "./Initialreasult";
+import { useRouter } from "next/router";
 
 export default function SearchIndex() {
+  const router = useRouter()
   const { data: session } = useSession();
   const { category, loading, err } = useCategories({
     token: session?.user?.accessToken,
@@ -27,7 +29,7 @@ export default function SearchIndex() {
       }
     });
   });
-  console.log(initailLD);
+  console.log(category);
   return (
     <div className="w-full">
       <div className="bg-white w-1/2 p-2 rounded-full ml-4 mt-3 flex">
@@ -52,7 +54,7 @@ export default function SearchIndex() {
         {!term &&
           category?.map((e) => {
             return (
-              <div key={e.id}>
+              <div key={e.id} onClick={()=>router.push(`/genre/${e.id}`)}>
                 <Card2 img={e.icons[0].url} title={e.name} />
               </div>
             );

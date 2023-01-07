@@ -8,7 +8,7 @@ function Card2({ title = 'something' ,img='	https://wrapped-images.spotifycdn.co
       style={{
         background: `linear-gradient(rgba(255, 255, 255, 0.2), #${randomColor()})`,
       }}
-      className="w-[200px] h-[200px] rounded-md relative overflow-hidden mt-6 transition"
+      className="w-[200px] h-[200px] rounded-md relative overflow-hidden mt-6 transition cursor-pointer"
     >
       <h2 className="text-white font-sans font-bold text-2xl m-2">{title}</h2>
       <LazyLoad>

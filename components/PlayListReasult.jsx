@@ -12,7 +12,7 @@ function PlayListReasult({ reasult, loading }) {
             <div key={e.loading} onClick={()=>router.push(`/playlist/${e.id}`)}>
               <Card1
                 key={e.id}
-                image={e.images[1]?.url && e.images[1].url}
+                image={e.images[0]?.url && e.images[0].url}
                 title={e.name}
                 subtitle={`By ${e.owner?.display_name}`}
               />

@@ -19,7 +19,7 @@ function Playlist() {
     <div className="w-screen h-screen">
       <div className="w-full flex h-[100%]">
         <SideBar />
-        <Main insert={<PLaylistIndex obj={playist}/>} />
+        <Main insert={<PLaylistIndex obj={playist} loading={loading}/>} />
       </div>
     </div>
   );

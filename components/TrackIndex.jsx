@@ -28,8 +28,9 @@ function TrackIndex() {
     <div
       style={{
         background: `linear-gradient(#${randomColor()},black)`,
+        transition:'.4s'
       }}
-      className="w-full h-full flex flex-col justify-around items-center"
+      className="w-full h-full flex flex-col justify-around items-center glass_bg"
     >
       <div className="w-[100%] h-[80%]  rounded-lg  ">
         <h1 className="text-2xl text-white font-sans font-bold m-5">
