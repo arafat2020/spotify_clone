@@ -16,7 +16,7 @@ function LIbreryIndex() {
       {loading ? (
         <Skeleton variant="text" sx={{fontSize:'1.5rem',width:'400px'}}/>
       ) : (
-        <h1 className="text-white text-2xl m-4 capitalize font-bold font-sans">
+        <h1 className="text-white sm:text-2xl text-2xl sm:m-4 mt-9 ml-3 capitalize font-bold font-sans">
           {saved?.length === 0 ? "No Track found" : "Saved Track "}
         </h1>
       )}

@@ -32,7 +32,7 @@ export default function SearchIndex() {
   console.log(category);
   return (
     <div className="w-full">
-      <div className="bg-white w-1/2 p-2 rounded-full ml-4 mt-3 flex">
+      <div className="bg-white w-1/2 p-1 rounded-full ml-4 sm:mt-3 mt-11 flex">
         <div className="cursor-pointer" onClick={()=>setTerm(ref.current.value)}>
           <SearchIcon />
         </div>

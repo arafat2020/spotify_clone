@@ -5,8 +5,8 @@ import Card3 from "./Card3";
 function InitialMAin({ Initialreasult }) {
   return (
     <div className="w-full">
-      <div className="w-full mt-4 flex justify-evenly">
-        <div className="w-[45%]  ">
+      <div className="w-full mt-4 flex sm:flex-row flex-col sm:justify-evenly items-center">
+        <div className="sm:w-[45%] w-[95%] ">
           <h1 className="text-white text-2xl mb-4 capitalize font-bold font-sans">
             {Initialreasult && "Top result"}
           </h1>
@@ -32,7 +32,7 @@ function InitialMAin({ Initialreasult }) {
             </div>
           </div>
         </div>
-        <div className="w-[45%]  ">
+        <div className="sm:w-[45%] w-[95%] ">
           <h1 className="text-white text-3xl mb-4 capitalize font-bold font-sans">
             {Initialreasult && "Songs"}
           </h1>

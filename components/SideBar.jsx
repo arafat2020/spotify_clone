@@ -20,7 +20,7 @@ function SideBar() {
 
   // console.log(loading, err, playList);
   return (
-    <div className="w-[30%] min-w-[189px] h-[100%] bg-black">
+    <div className="hidden sm:inline sm:w-[30%] min-w-[189px] h-[100%] bg-black">
       <div className=" ml-5 mt-5 space-y-5">
         <h1>
           <span className="text-[#e2dbdb] text-lg">hacker</span>

@@ -33,7 +33,7 @@ function TrackIndex() {
       className="w-full h-full flex flex-col justify-around items-center glass_bg"
     >
       <div className="w-[100%] h-[80%]  rounded-lg  ">
-        <h1 className="text-2xl text-white font-sans font-bold m-5">
+        <h1 className="sm:text-2xl text-xl text-white font-sans font-bold sm:m-5 mt-9 ml-5">
           Recomended Track
         </h1>
         <div className="w-[100%] h-[100%] overflow-y-scroll scrollbar-hide flex flex-wrap items-center justify-around">
@@ -52,7 +52,7 @@ function TrackIndex() {
                   >
                     <Card3
                       title={e.name}
-                      img={e.album.images[2].url}
+                      img={e.album.images[2]?.url}
                       subtitle={e.album.artists[0].name}
                     />
                   </div>

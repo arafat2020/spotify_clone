@@ -14,7 +14,7 @@ function GenreIndex() {
   });
   console.log(category,err);
   return <div className="w-full h-full overflow-y-scroll scrollbar-hide">
-    <h2 className="text-2xl text-white font-sans font-bold m-5">
+    <h2 className="text-xl text-white font-sans font-bold sm:m-5 mt-9 ml-3">
         Playlist for Genre
     </h2>
     <div className="w-full flex flex-wrap items-center justify-around">

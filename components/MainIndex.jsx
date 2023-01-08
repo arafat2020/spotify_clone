@@ -46,7 +46,7 @@ function MainIndex() {
   return (
     <div className="w-full">
       {!topLD ? (
-        <h1 className="text-2xl text-white font-sans font-bold m-5">
+        <h1 className="text-xl  sm:text-2xl text-white font-sans font-bold sm:m-5 mt-9 ml-5" >
           {toper && "Your top Track"}
         </h1>
       ) : (
@@ -84,7 +84,7 @@ function MainIndex() {
         )}
       </div>
       {!loading ? (
-        <h1 className="text-2xl text-white font-sans font-bold m-5">
+        <h1 className="text-xl text-white font-sans font-bold sm:m-5 mt-9 ml-5">
           {lenght != 0 && "Recently PLayed"}
         </h1>
       ) : (
@@ -123,7 +123,7 @@ function MainIndex() {
         )}
       </div>
       {!newld ? (
-        <h1 className="text-2xl text-white font-sans font-bold m-5">
+        <h1 className="text-xl  sm:text-2xl text-white font-sans font-bold sm:m-5 mt-9 ml-5">
           New Releas
         </h1>
       ) : (
@@ -156,7 +156,7 @@ function MainIndex() {
         )}
       </div>
       {!fLd && (
-        <h1 className="text-2xl text-white font-sans font-bold m-5">
+        <h1 className="text-xl sm:text-2xl text-white font-sans font-bold sm:m-5 mt-9 ml-5">
           Featured Playlist
         </h1>
       )}

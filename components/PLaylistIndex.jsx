@@ -1,5 +1,5 @@
 import { useSession } from "next-auth/react";
-import React from "react";
+import React, { useContext } from "react";
 import LazyLoad from "react-lazy-load";
 import { formatTIme } from "../lib/formatTIme";
 import Card4 from "./Card4";
@@ -8,8 +8,10 @@ import MoreHorizIcon from "@mui/icons-material/MoreHoriz";
 import { truncateString } from "../lib/truncate";
 import useGetUser from "../hooks/getUser";
 import { Skeleton } from "@mui/material";
+import { TunContext } from "../provider/tuneprovider";
 
 function PLaylistIndex({ obj, loading }) {
+  const { setTrack } = useContext(TunContext);
   const { data: session } = useSession();
   const randomColor = () => Math.floor(Math.random() * 16777215).toString(16);
   const totalDuration = () => {
@@ -18,7 +20,7 @@ function PLaylistIndex({ obj, loading }) {
     });
   };
   const { user, loading: userLD } = useGetUser({
-    token: session.user.accessToken,
+    token: session?.user?.accessToken,
     userID: obj?.owner.id,
   });
   console.log(user, obj);
@@ -30,7 +32,7 @@ function PLaylistIndex({ obj, loading }) {
         background: `linear-gradient(#${randomColor()},black)`,
       }}
     >
-      <div className="w-full h-[50%] flex pt-9 pl-7">
+      <div className="w-full sm:h-[50%] h-auto flex sm:flex-row flex-col pt-11   sm:pt-9 pl-7">
         {loading ? (
           <Skeleton
             variant="rectangular"
@@ -45,11 +47,11 @@ function PLaylistIndex({ obj, loading }) {
             <img
               src={obj?.images[0]?.url}
               alt="img"
-              className="w-[250px] h-[250px] object-contain"
+              className="sm:w-[250px] w-[150px] sm:h-[250px] h-[150px] object-contain"
             />
           </LazyLoad>
         )}
-        <div className="h-[250px] flex flex-col justify-between p-4">
+        <div className="sm:h-[250px] h-[150px] flex flex-col justify-between p-4">
           <p className="text-white font-sans uppercase text-[12px] font-semibold">
             {loading ? (
               <Skeleton
@@ -64,7 +66,7 @@ function PLaylistIndex({ obj, loading }) {
               obj?.type
             )}
           </p>
-          <h3 className="text-white text-8xl font-sans font-bold">
+          <h3 className="text-white text-2xl sm:text-8xl font-sans font-bold">
             {loading ? (
               <Skeleton
                 variant="text"
@@ -79,7 +81,7 @@ function PLaylistIndex({ obj, loading }) {
             )}
           </h3>
           <div className="space-y-1">
-            <p className="text-[15px] text-slate-400"> {obj?.description}</p>
+            <p className="text-[12px] text-slate-400"> {obj?.description}</p>
             <div className="flex space-x-1">
               {userLD ? (
                 <Skeleton
@@ -101,17 +103,20 @@ function PLaylistIndex({ obj, loading }) {
                 </LazyLoad>
               )}
               {loading ? (
-                <Skeleton variant="text" sx={{
-                  background: "rgb(140, 142, 145)",
-                  fontSize: "12px",
-                  width: "230px",
-                }} />
+                <Skeleton
+                  variant="text"
+                  sx={{
+                    background: "rgb(140, 142, 145)",
+                    fontSize: "12px",
+                    width: "230px",
+                  }}
+                />
               ) : (
                 <>
                   <p className="text-white">
-                    <span className="font-bold">{obj?.owner.display_name}</span>
+                    <span className="sm:font-bold font-[12px]">{obj?.owner.display_name}</span>
                     .
-                    <span className="font-[12px]">
+                    <span className="font-[10px]">
                       {obj?.tracks.total} Songs,
                     </span>
                   </p>
@@ -130,7 +135,7 @@ function PLaylistIndex({ obj, loading }) {
           </div>
         </div>
       </div>
-      <div className="w-full min-h-[50%] glass_bg2 rounded-none">
+      <div className="w-full sm:h-[50%] h-auto glass_bg2 rounded-none">
         <div className="flex space-x-5 p-3">
           <PlayArrowIcon
             sx={{
@@ -148,15 +153,21 @@ function PLaylistIndex({ obj, loading }) {
         <hr className="border-none bg-slate-600 h-[2px] w-[95%] mx-auto  m-3" />
         {obj?.tracks.items.map((e, i) => {
           return (
-            <Card4
-              key={e.id}
-              index={0 + i}
-              title={e.track.name}
-              subtitle={e.track.artists[0].name}
-              url={e.track.album.images[2]?.url}
-              album={e.track.album.name}
-              time={e.track.duration_ms}
-            />
+            <div
+              key={e.track.id}
+              onClick={() => setTrack(e.track.id)}
+              className="cursor-pointer"
+            >
+              <Card4
+                key={e.id}
+                index={0 + i}
+                title={e.track.name}
+                subtitle={e.track.artists[0].name}
+                url={e.track.album.images[2]?.url}
+                album={e.track.album.name}
+                time={e.track.duration_ms}
+              />
+            </div>
           );
         })}
       </div>
