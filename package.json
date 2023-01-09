@@ -16,7 +16,7 @@
     "axios": "^1.2.2",
     "eslint": "8.30.0",
     "eslint-config-next": "13.0.7",
-    "next": "13.0.7",
+    "next": "^12.3.2-canary.43",
     "next-auth": "^4.18.8",
     "react": "18.2.0",
     "react-dom": "18.2.0",
