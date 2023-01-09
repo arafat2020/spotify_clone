@@ -25,15 +25,15 @@ export default function Login() {
           className="w-[300px] h-[120px]"
           src="https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg"
         />
-        
+        {pr && (
           <button
             className="bg-green-500 text-white font-semibold p-3 rounded-md"
-            key={pr?pr:'spotify'}
-            onClick={() => signIn(pr?pr:'spotify', { callbackUrl: "/" })}
+            key={pr}
+            onClick={() => signIn(pr, { callbackUrl: "/" })}
           >
-            Login with {pr?pr:'spotify'}
+            Login with {pr}
           </button>
-      
+        )}
       </div>
     </div>
   );
