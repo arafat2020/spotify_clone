@@ -13,6 +13,7 @@ export default function Home() {
       reDirect();
     }
   }, [status]);
+  console.log(process.env);
   return (
     <div className="w-screen h-screen">
       <div className="w-full flex h-[100%]">
