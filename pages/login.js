@@ -1,15 +1,8 @@
 import { getProviders, signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
-export default function Login() {
-  const [pr,setPr]=useState()
-  const provider = async () => await getProviders();
-  provider().then(res=>{
-    setPr(res.spotify.id);
-  }).catch(err=>{
-    console.log(err);
-  })
+function Login({ provider }) {
   const router = useRouter();
   const { status } = useSession();
   useEffect(() => {
@@ -25,17 +18,29 @@ export default function Login() {
           className="w-[300px] h-[120px]"
           src="https://upload.wikimedia.org/wikipedia/commons/2/26/Spotify_logo_with_text.svg"
         />
-        {pr && (
-          <button
-            className="bg-green-500 text-white font-semibold p-3 rounded-md"
-            key={pr}
-            onClick={() => signIn(pr, { callbackUrl: "/" })}
-          >
-            Login with {pr}
-          </button>
-        )}
+        {Object.values(provider).map((e) => {
+          return (
+            <button
+              className="bg-green-500 text-white font-semibold p-3 rounded-md"
+              key={e.id}
+              onClick={() => signIn(e.id, { callbackUrl: "/" })}
+            >
+              Login with {e.name}
+            </button>
+          );
+        })}
       </div>
     </div>
   );
 }
 
+export async function getServerSideProps() {
+  const provider = await getProviders();
+  return {
+    props: {
+      provider,
+    },
+  };
+}
+
+export default Login;
