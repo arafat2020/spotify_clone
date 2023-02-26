@@ -135,7 +135,7 @@ function PLaylistIndex({ obj, loading }) {
           </div>
         </div>
       </div>
-      <div className="w-full sm:h-[50%] h-auto glass_bg2 rounded-none">
+      <div className="w-full sm:min-h-[50%] h-auto glass_bg2 rounded-none">
         <div className="flex space-x-5 p-3">
           <PlayArrowIcon
             sx={{

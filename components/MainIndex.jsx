@@ -41,7 +41,7 @@ function MainIndex() {
   } = useMyTopArtist({
     token: session?.user.accessToken,
   });
-  console.log(toper);
+  // console.log(toper);
   // console.log(session);
   return (
     <div className="w-full">

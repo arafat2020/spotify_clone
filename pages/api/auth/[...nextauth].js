@@ -27,6 +27,9 @@ export default NextAuth({
       clientId: process.env.NEXT_PUBLIC_CLIENT_ID,
       clientSecret: process.env.NEXT_PUBLIC_CLIENT_SECRET,
       authorization: LOGIN_URL,
+      httpOptions:{
+        timeout:20000
+      }
     }),
     // ...add more providers here
   ],

@@ -21,14 +21,14 @@ export default function SearchIndex() {
   } = useInitialSearch({ token: session?.user?.accessToken, term: term });
   const ref = useRef();
   useEffect(() => {
-    const yt_form = document.getElementById("yt_form");
+    // const yt_form = document.getElementById("yt_form");
 
-    yt_form.addEventListener("keypress", (e) => {
-      if (e.key === "Enter") {
-        setTerm(ref.current.value);
-      }
-    });
-  });
+    // yt_form.addEventListener("keypress", (e) => {
+    //   if (e.key === "Enter") {
+    //     setTerm(ref.current.value);
+    //   }
+    // });
+  },[]);
   console.log(category);
   return (
     <div className="w-full">
@@ -39,7 +39,7 @@ export default function SearchIndex() {
         <input
           id="yt_form"
           ref={ref}
-          // onChange={(e)=>setTerm(e.target.value)}
+          onChange={(e)=>setTerm(e.target.value)}
           type="text"
           className="outline-none w-3/4"
           placeholder="What do you want to listen to?"

@@ -10,7 +10,7 @@ function useUSerPlayList({ token }) {
       await spiApi
           .getUserPlaylists()
           .then((res) => {
-            // console.log(res);
+            console.log('pl',res);
             setPlaylist(res.body.items);
             setLoading(false);
           })

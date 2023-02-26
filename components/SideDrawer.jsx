@@ -19,7 +19,6 @@ function SideDrawer() {
     token: session?.user?.accessToken,
   });
   const { setSide, side } = useContext(TunContext);
-  console.log(side);
   return (
     <div>
       <SwipeableDrawer anchor="left" onClose={() => setSide(false)} open={side}>

@@ -9,6 +9,8 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import PlayListLoader from "./sceletonLoader/PlayListLoader";
 
+
+
 function SideBar() {
   const router = useRouter();
   const { data: session } = useSession();
@@ -18,7 +20,8 @@ function SideBar() {
   // console.log(session);
   // if (!session) return () => router.push("/login");
 
-  // console.log(loading, err, playList);
+  console.log( err )
+  console.log(playList,err,loading);
   return (
     <div className="hidden sm:inline sm:w-[30%] min-w-[189px] h-[100%] bg-black">
       <div className=" ml-5 mt-5 space-y-5">
