@@ -2,6 +2,10 @@ import NextAuth from "next-auth";
 import SpotifyProvider from "next-auth/providers/spotify";
 import { LOGIN_URL, spiApi } from "../../../lib/spotify";
 
+export const config = {
+  runtime: 'nodejs',
+}
+
 async function refresssAccessToken(token) {
   try {
     spiApi.setAccessToken(token.accessToken);
