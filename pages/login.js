@@ -34,6 +34,10 @@ function Login({ provider }) {
   );
 }
 
+export const config = {
+  runtime: 'nodejs',
+}
+
 export async function getServerSideProps() {
   const provider = await getProviders();
   return {
