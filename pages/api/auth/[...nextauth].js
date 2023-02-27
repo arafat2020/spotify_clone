@@ -3,8 +3,8 @@ import SpotifyProvider from "next-auth/providers/spotify";
 import { LOGIN_URL, spiApi } from "../../../lib/spotify";
 
 export const config = {
-  runtime: 'nodejs',
-}
+  runtime: "nodejs",
+};
 
 async function refresssAccessToken(token) {
   try {
@@ -31,9 +31,9 @@ export default NextAuth({
       clientId: process.env.NEXT_PUBLIC_CLIENT_ID,
       clientSecret: process.env.NEXT_PUBLIC_CLIENT_SECRET,
       authorization: LOGIN_URL,
-      httpOptions:{
-        timeout:20000
-      }
+      httpOptions: {
+        timeout: 20000,
+      },
     }),
     // ...add more providers here
   ],
@@ -57,7 +57,7 @@ export default NextAuth({
       }
       return await refresssAccessToken(token);
     },
-    session({ session, token }) {
+    async session({ session, token }) {
       session.user.accessToken = token.accessToken;
       session.user.refreshToken = token.refreshToken;
       session.user.userName = token.userName;
